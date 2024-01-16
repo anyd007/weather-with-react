@@ -26,7 +26,7 @@ const CurrentLocation = () => {
         }
         getLocation();
     }, [])
-    return { location, loading };
+    return { location, loading, setLoading };
 }
 
 export default CurrentLocation;
