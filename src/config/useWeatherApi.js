@@ -29,7 +29,7 @@ const useWeatherApi = (location, requestedCity) => {
                     }
                 }
                 if (location) {
-                    const fiveDaysResponse = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${apiId}&units=metric`)
+                    const fiveDaysResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${apiId}&units=metric`)
                     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${apiId}&units=metric`);
                     if (response.ok) {
                         const data = await response.json();
