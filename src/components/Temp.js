@@ -53,7 +53,7 @@ const Temp = ({ weather }) => {
                         <h2>{weather.main.temp}&deg;C</h2>
                     </div>
                     <div className="temp-item">
-                        <h3>odczuwalna</h3>
+                        <h3>odczucie</h3>
                         <div className="temp-animation">
                             <div className={`temp-scale ${weather.main.feels_like <= 0 ? 'cold' : ''}`} style={realFeels}></div>
                             {/* <div className="temp-end"></div> */}
@@ -61,7 +61,7 @@ const Temp = ({ weather }) => {
                         <h2>{weather.main.feels_like}&deg;C</h2>
                     </div>
                     <div className="temp-item">
-                        <h3>minimalna</h3>
+                        <h3>min</h3>
                         <div className="temp-animation">
                             <div className={`temp-scale ${weather.main.temp_min <= 0 ? 'cold' : ''}`} style={minTemp}></div>
                             {/* <div className="temp-end"></div> */}
@@ -69,7 +69,7 @@ const Temp = ({ weather }) => {
                         <h2>{weather.main.temp_min}&deg;C</h2>
                     </div>
                     <div className="temp-item">
-                        <h3>maksymalna</h3>
+                        <h3>max</h3>
                         <div className="temp-animation">
                             <div className={`temp-scale ${weather.main.temp_max <= 0 ? 'cold' : ''}`} style={maxTemp}></div>
                             {/* <div className="temp-end"></div> */}
@@ -80,6 +80,7 @@ const Temp = ({ weather }) => {
             }
         </div>
     );
+  
 }
 
 export default Temp;
