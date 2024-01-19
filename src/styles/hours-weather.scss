@@ -1,0 +1,19 @@
+
+.hours{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+
+    .hours-items{
+        margin-bottom: 1rem;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            width: 70px;
+        }
+    }
+}
