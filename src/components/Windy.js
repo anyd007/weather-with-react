@@ -14,7 +14,7 @@ const Windy = ({ weather }) => {
         }
 
     }, [weather])
-    console.log(windDetails);
+    
     return (
         <div className="windy">
             {weather &&
