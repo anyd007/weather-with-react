@@ -38,7 +38,7 @@ const Temp = ({ weather }) => {
         height: `${tempMax}%`,
         transition: `all ${transitionDuration}s ease`,
     }
-    
+   
 
     return (
         <div className="temp">
