@@ -32,7 +32,7 @@ const Drops = ({ weather }) => {
     console.log(drposDetails);
     return (
         <div className="drops">
-            {drposDetails.snow > 0 || drposDetails.rain > 0 &&
+            {(drposDetails.snow > 0 || drposDetails.rain > 0) &&
                 <div className="drops-detalis">
                     {drposDetails.snow > 0 &&
                         <div className="drops-item">
