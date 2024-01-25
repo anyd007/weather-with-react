@@ -63,6 +63,7 @@ const Drops = ({ weather }) => {
                             <p className='last-drops__title'>ostatnia godzina:</p>
                             <p className='last-drops__value'>brak opadów</p>
                         </div>
+                        <img src={SnowIcon} alt="" />
                     </div>
                 </div>
             }

@@ -22,7 +22,7 @@ const HourWeather = ({ fiveDay }) => {
             setHoursWeather(newHourWeather);
         }
     }, [fiveDay])
-   
+   console.log(fiveDay);
    
     return (
         <div className="hours">
