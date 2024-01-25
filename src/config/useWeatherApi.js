@@ -27,6 +27,7 @@ const useWeatherApi = (location, requestedCity) => {
                         setFiveDay(data);
                     } else {
                         setFiveDay(null);
+                        setApiError("Nie udało się odczytać danych dla podanej lokalizacji");
                     }
 
                     setLoading(false);
