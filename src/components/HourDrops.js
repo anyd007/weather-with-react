@@ -45,7 +45,7 @@ const HourDrops = ({ fiveDay }) => {
                             {hour.rain > 0 && (
                                 <div className="hour-drops__item--info">
                                     <img src={RainIcon} alt="" />
-                                    <p>Deszcz: {hour.rain}</p>
+                                    <p>{hour.rain}mm</p>
                                 </div>
                             )}
                             {hour.snow > 0 && (
