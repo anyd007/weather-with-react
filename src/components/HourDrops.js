@@ -25,7 +25,7 @@ const HourDrops = ({ fiveDay }) => {
         }
     }, [fiveDay]);
 
-    console.log(hourlyDrops);
+   
 
 
 

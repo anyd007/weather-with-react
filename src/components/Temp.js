@@ -39,7 +39,7 @@ const Temp = ({ weather }) => {
         transition: `all ${transitionDuration}s ease`,
     }
    
-
+    console.log(weather);
     return (
         <div className="temp">
             {weather &&

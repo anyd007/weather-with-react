@@ -18,10 +18,11 @@
         backdrop-filter: blur(6.1px);
         -webkit-backdrop-filter: blur(6.1px);
         border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        min-width: 80px;
 
         p {
-            width: 70px;
-            padding: 5px 0;
+            text-transform: uppercase;
             text-shadow: 2px 2px 5px #fff;
 
             &.worm{
