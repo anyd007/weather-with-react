@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const useWeatherApi = (location, requestedCity) => {
 
     const [weather, setWeather] = useState(null);
-    const [fiveDay, setFiveDay] = useState(null);
+    const [fiveDay, setFiveDay] = useState(0);
     const [apiError, setApiError] = useState(null);
     const [loading, setLoading] = useState(true);
 

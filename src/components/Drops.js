@@ -5,6 +5,7 @@ import '../styles/drops.scss';
 
 const Drops = ({ weather }) => {
     const [drposDetails, setDrposDetails] = useState({ snow: 0, rain: 0 });
+    
     useEffect(() => {
         const { rain, snow } = weather;
         if (snow) {
@@ -14,25 +15,25 @@ const Drops = ({ weather }) => {
                 rain: 0
             });
         }
-        else if(rain){
+        else if (rain) {
             setDrposDetails({
                 ...drposDetails,
                 snow: 0,
                 rain: rain["1h"]
             });
         }
-        else{
+        else {
             setDrposDetails({
-               ...drposDetails,
+                ...drposDetails,
                 snow: 0,
                 rain: 0
             });
         }
     }, [weather])
-    console.log(drposDetails);
+   
     return (
         <div className="drops">
-            {(drposDetails.snow > 0 || drposDetails.rain > 0) &&
+            {(drposDetails.snow > 0 || drposDetails.rain > 0) ?
                 <div className="drops-detalis">
                     {drposDetails.snow > 0 &&
                         <div className="drops-item">
@@ -53,6 +54,16 @@ const Drops = ({ weather }) => {
                             </div>
                         </div>
                     }
+                </div>
+                :
+                <div className="drops-detalis">
+                    <div className="drops-item">
+                        <img src={RainIcon} alt="" />
+                        <div className="last-drops">
+                            <p className='last-drops__title'>ostatnia godzina:</p>
+                            <p className='last-drops__value'>brak opadów</p>
+                        </div>
+                    </div>
                 </div>
             }
         </div>
