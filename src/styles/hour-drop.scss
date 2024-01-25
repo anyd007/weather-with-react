@@ -1,10 +1,13 @@
 
 .hour-drops{
     margin-bottom: 2rem;
+ 
     display: flex;
     flex-direction: row;
     overflow-y: auto;
     gap: 5px;
+    border-bottom: 4px solid #ff6700;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
 
     &__item{
         margin-bottom: 1rem;
