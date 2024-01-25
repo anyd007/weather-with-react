@@ -11,9 +11,10 @@ return (
     <div className="weather-details">
       {weather && <Temp weather={weather} fiveDay={fiveDay}/>}
       {fiveDay && <HourWeather fiveDay={fiveDay}/>}
-      {weather && <Windy weather={weather}/>}
       {weather && <Drops weather={weather}/>}
       {fiveDay && <HourDrops fiveDay={fiveDay}/>}
+      {weather && <Windy weather={weather}/>}
+      
       </div>
     );
 }
