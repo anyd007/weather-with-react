@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import RainIcon from '../assets/icons/rain.gif';
 import SnowIcon from '../assets/icons/snow.gif';
 import NoIcon from '../assets/icons/no.gif';
+import Sun from '../assets/icons/sun.gif';
+import Moon from '../assets/icons/moon.gif';
+import Clouds from '../assets/icons/clouds.gif';
+import FewCloudsD from '../assets/icons/few_clouds_d.gif';
+import FewCloudsN from '../assets/icons/few_clouds_n.gif';
+import Dizzle from '../assets/icons/dizzle.gif';
+import Tunder from '../assets/icons/tunder.gif';
 import '../styles/hour-drop.scss'
 
 const HourDrops = ({ fiveDay }) => {
     const [hourlyDrops, setHourlyDrops] = useState([]);
-
+    
     useEffect(() => {
         if (fiveDay) {
             const newHourlyDrops = fiveDay.list.map(item => {
@@ -24,9 +31,6 @@ const HourDrops = ({ fiveDay }) => {
             setHourlyDrops(newHourlyDrops);
         }
     }, [fiveDay]);
-
-   
-
 
 
     return (

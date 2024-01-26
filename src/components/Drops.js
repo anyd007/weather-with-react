@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useWeatherIcons } from '../config/useWeatherIcons';
 import RainIcon from '../assets/icons/rain.gif';
 import SnowIcon from '../assets/icons/snow.gif';
+
 import '../styles/drops.scss';
 
 const Drops = ({ weather }) => {
     const [drposDetails, setDrposDetails] = useState({ snow: 0, rain: 0 });
-
+    const { weatherIcon } = useWeatherIcons(weather);
+    console.log(weatherIcon);
     useEffect(() => {
         const { rain, snow } = weather;
         if (snow) {
@@ -29,6 +32,7 @@ const Drops = ({ weather }) => {
                 rain: 0
             });
         }
+
     }, [weather])
 
     return (
@@ -59,12 +63,12 @@ const Drops = ({ weather }) => {
                 :
                 <div className="drops-detalis">
                     <div className="drops-item">
-                        <img src={RainIcon} alt="" />
+                        <img src={weatherIcon} alt="" />
                         <div className="last-drops">
-                            <p className='last-drops__title'>ostatnia godzina:</p>
-                            <p className='last-drops__value'>brak opadów</p>
+                            <p className='last-drops__title'>{weather.weather[0].description}</p>
+                            <p className='last-drops__value'>{weather.clouds["all"]}%</p>
                         </div>
-                        <img src={SnowIcon} alt="" />
+                        <img src={weatherIcon} alt="" />
                     </div>
                 </div>
             }

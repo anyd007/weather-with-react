@@ -16,7 +16,6 @@ const Weather = () => {
         }
     }, [geoError])
 
-    console.log(apiError);
     return (
         <div className='weather-constainer'>
             {loading && <ReactLoading type="bubbles" color="#000000" height={100} width={100} />}

@@ -11,10 +11,11 @@ const useWeatherApi = (location, requestedCity) => {
             const apiId = 'd2b6cbb301cc9b82439cc488b350ee22';
 
             try {
-                if (requestedCity) {
+                // Sprawdź, czy location istnieje i posiada wymagane właściwości (lat i lng)
+                if (location && location.lat && location.lng) {
                     const [response, fiveDaysResponse] = await Promise.all([
-                        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiId}&units=metric`),
-                        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&appid=${apiId}&units=metric`)
+                        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&lang=pl&appid=${apiId}&units=metric`),
+                        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&lang=pl&appid=${apiId}&units=metric`)
                     ]);
 
                     if (response.ok) {
@@ -31,12 +32,11 @@ const useWeatherApi = (location, requestedCity) => {
                     }
 
                     setLoading(false);
-                }
-
-                if (location) {
+                } else if (requestedCity) {
+                    // Jeśli location nie jest dostępne, sprawdź requestedCity
                     const [response, fiveDaysResponse] = await Promise.all([
-                        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${apiId}&units=metric`),
-                        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${apiId}&units=metric`)
+                        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&lang=pl&appid=${apiId}&units=metric`),
+                        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&lang=pl&appid=${apiId}&units=metric`)
                     ]);
 
                     if (response.ok) {
@@ -49,6 +49,7 @@ const useWeatherApi = (location, requestedCity) => {
                         setFiveDay(data);
                     } else {
                         setFiveDay(null);
+                        setApiError("Nie udało się odczytać danych dla podanego miasta");
                     }
 
                     setLoading(false);
@@ -69,7 +70,7 @@ const useWeatherApi = (location, requestedCity) => {
         };
     }, [location, requestedCity]);
 
-    return { weather, fiveDay, apiError, loading, setLoading, setApiError };
+    return { weather, fiveDay, apiError, loading, setLoading, setApiError, location};
 };
 
 export default useWeatherApi;
