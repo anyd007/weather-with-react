@@ -53,12 +53,12 @@ export const useWeatherIcons = (weather) => {
                 } else if (weatherId === 803 || weatherId === 804) {
                     setWeatherIcon(CloudsIcon);
                 } else {
-                    setWeatherIcon(null);
+                    setWeatherIcon("N/A");
                 }
             }
         }
     }, [weather])
-    console.log(weather);
+    
     return { weatherIcon };
 }
 
@@ -90,7 +90,7 @@ export const useHourWeatherIcons = (fiveDay) => {
                     return CloudsIcon;
                 }
                 else {
-                    setWeatherIcon(null);
+                    setWeatherIcon("N/A");
                 }
                 
             })
