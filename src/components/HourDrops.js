@@ -9,7 +9,7 @@ import '../styles/hour-drop.scss'
 const HourDrops = ({ fiveDay }) => {
     const [hourlyDrops, setHourlyDrops] = useState([]);
     const { weatherIcon } = useHourWeatherIcons(fiveDay);
-    console.log(weatherIcon);
+    
     useEffect(() => {
         if (fiveDay) {
             const newHourlyDrops = fiveDay.list.map((item, index)=> {
@@ -27,9 +27,8 @@ const HourDrops = ({ fiveDay }) => {
 
             setHourlyDrops(newHourlyDrops);
         }
-    }, [fiveDay]);
+    }, [fiveDay, weatherIcon]);
   
-
     return (
         <div className="hour-drops">
             {hourlyDrops && hourlyDrops.map((hour, index) => (

@@ -28,11 +28,11 @@ export const useWeatherIcons = (weather) => {
 
 
 
-            if (weatherId === 800 && currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC) {
+            if (weatherId === 800 && (currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC)) {
 
                 setWeatherIcon(MoonIcon)
             }
-            else if (weatherId === 801 || weatherId === 802 && currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC) {
+            else if ((weatherId === 801 || weatherId === 802) && (currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC)) {
                 setWeatherIcon(FewCloudsNIcon);
             }
 
@@ -58,7 +58,7 @@ export const useWeatherIcons = (weather) => {
             }
         }
     }, [weather])
-
+    console.log(weather);
     return { weatherIcon };
 }
 
@@ -89,6 +89,10 @@ export const useHourWeatherIcons = (fiveDay) => {
                 else if (id === 803 || id === 804) {
                     return CloudsIcon;
                 }
+                else {
+                    setWeatherIcon(null);
+                }
+                
             })
         setWeatherIcon(icons)
         }
