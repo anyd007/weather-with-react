@@ -1,5 +1,5 @@
- import { useState, useEffect } from'react';
- import useWeatherApi from './useWeatherApi';
+import { useState, useEffect } from 'react';
+import useWeatherApi from './useWeatherApi';
 import RainIcon from '../assets/icons/rain.gif';
 import SnowIcon from '../assets/icons/snow.gif';
 import SunIcon from '../assets/icons/sun.gif';
@@ -12,25 +12,31 @@ import ThunderIcon from '../assets/icons/tunder.gif';
 
 
 export const useWeatherIcons = (weather) => {
- 
-    const [weatherIcon, setWeatherIcon] = useState(null);
-        
-            useEffect(() =>{
-                if(weather){
-                    const weatherId = weather.weather[0].id;
-                    const sunrise = new Date(weather.sys.sunrise * 1000)
-                    const sunset = new Date(weather.sys.sunset * 1000)
 
-                    const refreshInterval = setInterval(()=>{
-                          const now = new Date()
-                    
-                    if(now > sunrise && now < sunset){
-                        if(weatherId === 800){
-                            setWeatherIcon(MoonIcon)
-                        }
-                    }
-                    }, 60000)
-                  
+    const [weatherIcon, setWeatherIcon] = useState(null);
+
+    useEffect(() => {
+        if (weather) {
+            const weatherId = weather.weather[0].id;
+            const sunriseUTC = (weather.sys.sunrise + weather.timezone) * 1000;
+            const sunsetUTC = (weather.sys.sunset + weather.timezone) * 1000;
+            const currentCityTimeUTC = (weather.dt + weather.timezone) * 1000;
+
+            // console.log("Current Time:", currentCityTimeUTC);
+            // console.log("Sunrise:", sunriseUTC);
+            // console.log("Sunset:", sunsetUTC);
+
+
+
+            if (weatherId === 800 && currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC) {
+
+                setWeatherIcon(MoonIcon)
+            }
+            else if (weatherId === 801 || weatherId === 802 && currentCityTimeUTC < sunriseUTC || currentCityTimeUTC > sunsetUTC) {
+                setWeatherIcon(FewCloudsNIcon);
+            }
+
+            else {
 
                 if (weatherId >= 200 && weatherId < 300) {
                     setWeatherIcon(ThunderIcon);
@@ -49,11 +55,45 @@ export const useWeatherIcons = (weather) => {
                 } else {
                     setWeatherIcon(null);
                 }
-
-                return () => clearInterval(refreshInterval);
             }
-            }, [weather])
- 
-    return {weatherIcon};
+        }
+    }, [weather])
+
+    return { weatherIcon };
 }
- 
+
+export const useHourWeatherIcons = (fiveDay) => {
+    const [weatherIcon, setWeatherIcon] = useState([]);
+    useEffect(() => {
+        if(fiveDay){
+            const icons = fiveDay.list.map((icon,index) =>{
+                let id =  icon.weather[0].id;
+                if(id >= 200 && id < 300){
+                    return ThunderIcon;
+                }
+                else if (id >= 300 && id < 400) {
+                    return DizzleIcon;
+                }
+                else if (id >= 500 && id < 600) {
+                    return RainIcon;
+                }
+                else if (id >= 600 && id < 700) {
+                    return SnowIcon;
+                }
+                else if (id === 800) {
+                    return SunIcon;
+                }
+                else if (id === 801 || id === 802) {
+                    return FewCloudsDIcon;
+                }
+                else if (id === 803 || id === 804) {
+                    return CloudsIcon;
+                }
+            })
+        setWeatherIcon(icons)
+        }
+    },[fiveDay])
+    return {weatherIcon}
+}
+
+

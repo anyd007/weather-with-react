@@ -8,7 +8,7 @@ import '../styles/drops.scss';
 const Drops = ({ weather }) => {
     const [drposDetails, setDrposDetails] = useState({ snow: 0, rain: 0 });
     const { weatherIcon } = useWeatherIcons(weather);
-    console.log(weatherIcon);
+  
     useEffect(() => {
         const { rain, snow } = weather;
         if (snow) {
