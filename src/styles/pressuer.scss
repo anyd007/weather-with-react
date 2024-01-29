@@ -18,7 +18,7 @@
 
         .pressure-item {
             position: relative;
-            width: 80%;
+            width: 100%;
 
             .pressure-animation {
                 margin: 0 auto;
@@ -35,7 +35,7 @@
                     content: '';
                     position: absolute;
                     left: 50%;
-                    bottom: 0;
+                    bottom: -1%;
                     transform: translate(-50%);
                     width: 90%;
                     height: 90%;
@@ -59,6 +59,20 @@
 
                 }
             }
+
+            .pressure-info{
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                z-index: 6;
+                transform: translate(-40%, -50%);
+                
+                & p{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-shadow: 2px 2px 5px #fff;
+                }
+            }
         }
     }
 
@@ -72,6 +86,13 @@
                     width: 150px;
                     height: 75px;
                 }
+
+            .pressure-info{
+                
+                & p{
+                    font-size: 1.2rem;
+                }
+            }
             }
         }
     }

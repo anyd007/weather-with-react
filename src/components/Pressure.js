@@ -31,7 +31,11 @@ const Pressure = ({ weather }) => {
                 <img src={PressuerIcon} alt="" />
                 <div className="pressure-item">
                     <div className="pressure-animation">
-                        <div className={`pressure-scale ${pressure < 1000 || pressure > 1020 ? 'low' : ''}` } style={pressureDisplay}></div>
+                        <div className={`pressure-scale ${pressure < 1000 || pressure > 1020 ? 'low' : ''}`} style={pressureDisplay}></div>
+                    </div>
+                    <div className="pressure-info">
+                        <p>{pressure}</p>
+                        <p>hPa</p>
                     </div>
                 </div>
                 <img src={PressuerIcon} alt='' />
