@@ -53,6 +53,10 @@
                     left: 0;
                     z-index: 4;
 
+                    &.low{
+                        background: #0000cd;
+                    }
+
                 }
             }
         }
