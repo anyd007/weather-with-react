@@ -58,14 +58,27 @@
                     }
 
                 }
+                
+            .pressure-values{
+                z-index: 6;
+                position: absolute;
+                bottom: 0;
+
+                &.max{
+                    right: 10%;
+                }
+                &.min{
+                    left: 10%;
+                }
+            }
             }
 
             .pressure-info{
                 position: absolute;
-                top: 60%;
+                top: 40%;
                 left: 50%;
                 z-index: 6;
-                transform: translate(-40%, -50%);
+                transform: translateX(-50%);
                 
                 & p{
                     font-size: 1.5rem;
@@ -83,8 +96,18 @@
             .pressure-item{
 
                 .pressure-animation{
-                    width: 150px;
-                    height: 75px;
+                    width: 200px;
+                    height: 100px;
+
+                    .pressure-values{
+
+                        &.max{
+                            right: 0;
+                        }
+                        &.min{
+                            left: 0;
+                        }
+                    }
                 }
 
             .pressure-info{
