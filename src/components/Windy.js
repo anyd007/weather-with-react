@@ -14,7 +14,7 @@ const Windy = ({ weather }) => {
         }
 
     }, [weather])
-
+   
     return (
         <div className="windy">
             {weather &&
