@@ -5,6 +5,8 @@ const Time = ({ weather }) => {
     const daysOfWeek = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
     const [time, setTime] = useState(null)
     const [date, setDate] = useState(null)
+    const [sunriseTime, setSunriseTime] = useState(null)
+    const [sunsetTime, setSunsetTime] = useState(null)
 
     console.log(weather);
     useEffect(() => {
@@ -23,10 +25,23 @@ const Time = ({ weather }) => {
             setDate(`${daysOfWeek[dayIndex]}, ${filterMonth}, ${year}`)
         }
     }, [weather])
+    useEffect(() => {
+        if (weather?.sys?.sunrise && weather?.sys?.sunset) {
+            const sunrise = new Date((weather.sys.sunrise) * 1000);
+            const hourSunrise = sunrise.getHours();
+            const minuteSunrise = sunrise.getMinutes();
+            setSunriseTime(`${hourSunrise < 10 ? '0' + hourSunrise : hourSunrise}:${minuteSunrise < 10 ? '0' + minuteSunrise : minuteSunrise}`);
+            const sunset = new Date((weather.sys.sunset) * 1000);
+            const hourSunset = sunset.getHours();
+            const minuteSunset = sunset.getMinutes();
+            setSunsetTime(`${hourSunset < 10? '0' + hourSunset : hourSunset}:${minuteSunset < 10? '0' + minuteSunset : minuteSunset}`);
+        }
+    }, [weather]);
     return (
         <div className="time">
-            <h2>{time}</h2>
+            <h3>{time}</h3>
             <h3>{date}</h3>
+            <h3>wschód / zachód : {sunriseTime} / {sunsetTime}</h3>
         </div>
     );
 }
