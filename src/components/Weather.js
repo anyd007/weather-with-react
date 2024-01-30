@@ -4,6 +4,7 @@ import useWeatherApi from '../config/useWeatherApi';
 import ReactLoading from 'react-loading';
 import WeatherDetails from './WeatherDetails';
 import ManualEntry from './Manual-entry';
+import Time from './Time';
 const Weather = () => {
     
     const [requestedCity, setRequestedCity] = useState(null);
@@ -26,7 +27,7 @@ const Weather = () => {
             }
             {weather && location
                 ?
-                <h2>prognoza pogody dla twojej obecnej lokalizacji</h2>
+                <Time weather={weather} />
                 :
                 <>
                     {requestedCity && !apiError && <h2>prognoza dla {requestedCity}</h2>}
