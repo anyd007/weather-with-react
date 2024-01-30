@@ -3,13 +3,9 @@
     margin: 2rem auto;
 
     .pressure-container {
-        display: grid;
-        grid-template-columns: 15% 1fr 15%;
+        display: flex;
         justify-content: center;
         align-items: center;
-        justify-items: center;
-        margin: 0 20px;
-        gap: 10px;
 
         img {
             width: 100%;
@@ -18,10 +14,34 @@
 
         .pressure-item {
             position: relative;
-            width: 100%;
+            width: 60%;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.28);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6.1px);
+            -webkit-backdrop-filter: blur(6.1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 5px;
+            z-index: 10;
+            .pressure-values {
+                z-index: 6;
+               
+
+                &.max {
+           
+                }
+
+                &.min {
+                   
+                }
+            }
 
             .pressure-animation {
-                margin: 0 auto;
+             
                 position: relative;
                 width: 300px;
                 height: 150px;
@@ -30,6 +50,7 @@
                 border-left: 2px solid #aaa;
                 border-right: 2px solid #aaa;
                 overflow: hidden;
+
 
                 &::before {
                     content: '';
@@ -40,9 +61,13 @@
                     width: 90%;
                     height: 90%;
                     border-radius: 300px 300px 0 0;
+                    border-top: 2px solid #aaa;
+                    border-left: 2px solid #aaa;
+                    border-right: 2px solid #aaa;
                     z-index: 5;
                     background-color: #8EC5FC;
-                    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+                    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); 
+
                 }
 
                 .pressure-scale {
@@ -51,36 +76,24 @@
                     height: 100%;
                     top: 0%;
                     left: 0;
-                    z-index: 4;
+                    z-index: -300;
 
-                    &.low{
+
+                    &.low {
                         background: #0000cd;
                     }
 
                 }
-                
-            .pressure-values{
-                z-index: 6;
-                position: absolute;
-                bottom: 0;
-
-                &.max{
-                    right: 10%;
-                }
-                &.min{
-                    left: 10%;
-                }
-            }
             }
 
-            .pressure-info{
+            .pressure-info {
                 position: absolute;
                 top: 40%;
                 left: 50%;
                 z-index: 6;
                 transform: translateX(-50%);
-                
-                & p{
+
+                & p {
                     font-size: 1.5rem;
                     font-weight: bold;
                     text-shadow: 2px 2px 5px #fff;
@@ -90,32 +103,34 @@
     }
 
     @media screen and (max-width: 768px) {
-        .pressure-container{
-            grid-template-columns: 20% 1fr 20%;
+        .pressure-container {
 
-            .pressure-item{
 
-                .pressure-animation{
-                    width: 200px;
-                    height: 100px;
+            .pressure-item {
 
-                    .pressure-values{
+                .pressure-values {
 
-                        &.max{
-                            right: 0;
-                        }
-                        &.min{
-                            left: 0;
-                        }
+                    &.max {
+                        right: 0;
+                    }
+
+                    &.min {
+                        left: 0;
                     }
                 }
 
-            .pressure-info{
-                
-                & p{
-                    font-size: 1.2rem;
+                .pressure-animation {
+                    width: 200px;
+                    height: 100px;
+
                 }
-            }
+
+                .pressure-info {
+
+                    & p {
+                        font-size: 1.2rem;
+                    }
+                }
             }
         }
     }
