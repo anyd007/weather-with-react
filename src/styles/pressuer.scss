@@ -108,16 +108,7 @@
 
             .pressure-item {
 
-                .pressure-values {
-
-                    &.max {
-                        right: 0;
-                    }
-
-                    &.min {
-                        left: 0;
-                    }
-                }
+                width: 100%;
 
                 .pressure-animation {
                     width: 200px;
