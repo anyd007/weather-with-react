@@ -49,13 +49,13 @@ const Pressure = ({ weather }) => {
                         <div className={`pressure-scale ${pressure < 1000 || pressure > 1020 ? 'low' : ''}`} style={pressureDisplay}></div>
                     </div>
                     <div className="pressure-info">
-                        <p>{pressure}</p>
-                        <p>hPa</p>
+                        <h2>{pressure}</h2>
+                        <h2>hPa</h2>
                     </div>
                 </div>
                 <div className="min-max-values">
-                    <p className="pressure-values min">{minPressure}hPa</p>
-                    <p className="pressure-values max">{maxPressure}hPa</p>
+                    <h3 className="pressure-values min">{minPressure}hPa</h3>
+                    <h3 className="pressure-values max">{maxPressure}hPa</h3>
                 </div>
             </div>
         </div>
