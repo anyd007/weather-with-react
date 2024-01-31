@@ -4,7 +4,7 @@ import '../styles/pollution.scss';
 const Pollution = ({pollution}) => {
     const [pollutionInfo, setPollutionInfo] = useState('')
     const [textStyle, setTextStyle] = useState(null)
-    console.log(pollution);
+ 
     useEffect(() =>{
         if(pollution && pollution.list){
             const pollutionIndex = pollution.list[0].main['aqi']

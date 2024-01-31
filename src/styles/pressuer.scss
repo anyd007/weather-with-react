@@ -1,7 +1,6 @@
 .pressure {
     // width: 100%;
-    padding: 5px;
-
+ 
     .pressure-container {
         background: rgba(255, 255, 255, 0.28);
         border-radius: 16px;
@@ -24,13 +23,7 @@
                 z-index: 6;
                
 
-                &.max {
-           
-                }
-
-                &.min {
-                   
-                }
+              
             }
 
             .pressure-animation {

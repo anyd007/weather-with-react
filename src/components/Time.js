@@ -7,25 +7,30 @@ const Time = ({ weather }) => {
     const [date, setDate] = useState(null)
     const [sunriseTime, setSunriseTime] = useState(null)
     const [sunsetTime, setSunsetTime] = useState(null)
-
+     
     useEffect(() => {
-        if (weather) {
-            const currentDate = new Date()
-            const hour = currentDate.getHours();
-            const minute = currentDate.getMinutes();
-            const filerHour = hour < 10 ? '0' + hour : hour;
-            const filerMinute = minute < 10 ? '0' + minute : minute;
+        const intervalId = setInterval(() => {
+            let currentDate = new Date()
+            let hour = currentDate.getHours();
+            let minute = currentDate.getMinutes();
+            let filerHour = hour < 10 ? '0' + hour : hour;
+            let filerMinute = minute < 10 ? '0' + minute : minute;
             setTime(`${filerHour}:${filerMinute}`)
-
-            const day = currentDate.getDate()
-            const year = currentDate.getFullYear()
-            const month = currentDate.getMonth() + 1;
-            const filterDay = day < 10 ? `0${day}` : day
-            const filterMonth =  month < 10 ? `0${month}` : month;
-            const dayIndex = currentDate.getDay()
+    
+            let day = currentDate.getDate()
+            let year = currentDate.getFullYear()
+            let month = currentDate.getMonth() + 1;
+            let filterDay = day < 10 ? `0${day}` : day
+            let filterMonth =  month < 10 ? `0${month}` : month;
+            let dayIndex = currentDate.getDay()
             setDate(`${daysOfWeek[dayIndex]}, ${filterDay}/${filterMonth}/${year}`)
-        }
-    }, [weather])
+            
+            
+        }, 1000);
+    
+        return () => clearInterval(intervalId);
+    }, []);
+    
     useEffect(() => {
         if (weather?.sys?.sunrise && weather?.sys?.sunset) {
             const sunrise = new Date((weather.sys.sunrise) * 1000);
@@ -40,7 +45,7 @@ const Time = ({ weather }) => {
     }, [weather]);
     return (
         <div className="time">
-            <h3>{time}</h3>
+            <h3 className='hour-display'>{time}</h3>
             <h3>{date}</h3>
             <h3>wschód / zachód : {sunriseTime} / {sunsetTime}</h3>
         </div>
