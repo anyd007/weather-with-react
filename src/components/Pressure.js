@@ -17,25 +17,25 @@ const Pressure = ({ weather }) => {
 
         }
     }, [weather])
-    
-    useEffect(() =>{
-const haldleScroll = () =>{
-    const pressureElelemt = pressureRef.current
-    if(pressureElelemt){
-        const elementPossitions = pressureElelemt.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight
-        
-        if(elementPossitions.top < windowHeight){
-            setPressureWidth(((pressure - minPressure) / (maxPressure - minPressure)) * 100);
 
+    useEffect(() => {
+        const haldleScroll = () => {
+            const pressureElelemt = pressureRef.current
+            if (pressureElelemt) {
+                const elementPossitions = pressureElelemt.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight
+
+                if (elementPossitions.top < windowHeight) {
+                    setPressureWidth(((pressure - minPressure) / (maxPressure - minPressure)) * 100);
+
+                }
+            }
         }
-    }
-}
         window.addEventListener("scroll", haldleScroll)
-        
+
         return () => window.removeEventListener("scroll", haldleScroll)
 
-    },[pressure, pressureRef,minPressure,maxPressure])
+    }, [pressure, pressureRef, minPressure, maxPressure])
 
     const pressureDisplay = {
         width: `${pressureWidth}%`,
@@ -45,17 +45,18 @@ const haldleScroll = () =>{
         <div className="pressure" ref={pressureRef}>
             <div className="pressure-container">
                 <div className="pressure-item">
-                    <p className="pressure-values min">{minPressure}hPa</p>
                     <div className="pressure-animation">
                         <div className={`pressure-scale ${pressure < 1000 || pressure > 1020 ? 'low' : ''}`} style={pressureDisplay}></div>
                     </div>
-                    <p className="pressure-values max">{maxPressure}hPa</p>
                     <div className="pressure-info">
                         <p>{pressure}</p>
                         <p>hPa</p>
                     </div>
                 </div>
-
+                <div className="min-max-values">
+                    <p className="pressure-values min">{minPressure}hPa</p>
+                    <p className="pressure-values max">{maxPressure}hPa</p>
+                </div>
             </div>
         </div>
     );

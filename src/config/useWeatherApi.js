@@ -40,10 +40,10 @@ const useWeatherApi = (location, requestedCity) => {
                     setLoading(false);
                 } else if (requestedCity) {
                     // Jeśli location nie jest dostępne, sprawdź requestedCity
-                    const [response, fiveDaysResponse, pollutionResponse] = await Promise.all([
+                    const [response, fiveDaysResponse] = await Promise.all([
                         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&lang=pl&appid=${apiId}&units=metric`),
                         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&lang=pl&appid=${apiId}&units=metric`),
-                        fetch(`https://api.openweathermap.org/data/2.5/air_pollution?q=${requestedCity}&lang=pl&appid=${apiId}&units=metric`)
+                        
                     ]);
 
                     if (response.ok) {
@@ -55,10 +55,7 @@ const useWeatherApi = (location, requestedCity) => {
                         const data = await fiveDaysResponse.json();
                         setFiveDay(data);
                     }
-                    if(pollutionResponse.ok) {
-                        const data = await pollutionResponse.json();
-                        setPollution(data);
-                    } else {
+                     else {
                         setFiveDay(null);
                         setApiError("Nie udało się odczytać danych dla podanego miasta");
                     }

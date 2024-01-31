@@ -3,9 +3,13 @@
     
 
     .pressure-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: rgba(255, 255, 255, 0.28);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.1px);
+        -webkit-backdrop-filter: blur(6.1px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 5px;
 
         img {
             width: 100%;
@@ -14,18 +18,8 @@
 
         .pressure-item {
             position: relative;
-            display: flex;
-            align-items: end;
-            justify-content: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.28);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(6.1px);
-            -webkit-backdrop-filter: blur(6.1px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 5px;
-            z-index: 10;
+           
+       
             .pressure-values {
                 z-index: 6;
                
@@ -99,6 +93,13 @@
                    
                 }
             }
+        }
+
+        .min-max-values{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 
