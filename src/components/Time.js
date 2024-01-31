@@ -18,11 +18,13 @@ const Time = ({ weather }) => {
             const filerMinute = minute < 10 ? '0' + minute : minute;
             setTime(`${filerHour}:${filerMinute}`)
 
+            const day = currentDate.getDate()
             const year = currentDate.getFullYear()
             const month = currentDate.getMonth() + 1;
+            const filterDay = day < 10 ? `0${day}` : day
             const filterMonth =  month < 10 ? `0${month}` : month;
             const dayIndex = currentDate.getDay()
-            setDate(`${daysOfWeek[dayIndex]}, ${filterMonth}, ${year}`)
+            setDate(`${daysOfWeek[dayIndex]}, ${filterDay}/${filterMonth}/${year}`)
         }
     }, [weather])
     useEffect(() => {
