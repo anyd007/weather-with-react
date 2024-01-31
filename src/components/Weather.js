@@ -11,7 +11,7 @@ const Weather = () => {
     const [requestedCity, setRequestedCity] = useState(null);
     const [background, setBackground] = useState(null);
     const { location, geoError } = useGeoLoc();
-    const { weather, fiveDay, apiError, setApiError, loading, setLoading } = useWeatherApi(location, requestedCity);
+    const { weather, fiveDay, pollution, apiError, setApiError, loading, setLoading } = useWeatherApi(location, requestedCity);
      
     useEffect(() => {
         if (geoError) {
@@ -58,7 +58,7 @@ const Weather = () => {
                     {requestedCity && !apiError && <h2>prognoza dla {requestedCity}</h2>}
                 </>
             }
-            {weather  && !apiError && <WeatherDetails weather={weather} fiveDay={fiveDay}/>}
+            {weather  && !apiError && <WeatherDetails weather={weather} fiveDay={fiveDay} pollution={pollution}/>}
         </div>
     )
 }

@@ -8,7 +8,6 @@ const Time = ({ weather }) => {
     const [sunriseTime, setSunriseTime] = useState(null)
     const [sunsetTime, setSunsetTime] = useState(null)
 
-    console.log(weather);
     useEffect(() => {
         if (weather) {
             const currentDate = new Date()
