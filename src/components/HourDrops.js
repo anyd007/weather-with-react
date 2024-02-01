@@ -33,7 +33,7 @@ const HourDrops = ({ fiveDay }) => {
             {hourlyDrops && hourlyDrops.map((hour, index) => (
                 <div className="hour-drops__item" key={index}>
                     <p>{hour.day}</p>
-                    <p>{hour.time}</p>
+                    <p>ok. {hour.time}</p>
                     {hour.noneDrops ? (
                         <div className="hour-drops__item--info">
                              <img src={hour.weatherIcon} alt="" />

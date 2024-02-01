@@ -41,6 +41,7 @@ const Pressure = ({ weather }) => {
         width: `${pressureWidth}%`,
         transition: `all ${transitionDuration}s ease`,
     }
+    
     return (
         <div className="pressure" ref={pressureRef}>
             <div className="pressure-container">

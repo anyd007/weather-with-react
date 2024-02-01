@@ -28,7 +28,7 @@ const HourWeather = ({ fiveDay }) => {
             {hoursWeather && hoursWeather.map((hour, index) => (
                 <div className="hours-items" key={index}>
                     <p>{hour.day}</p>
-                    <p>{hour.time}</p>
+                    <p>ok. {hour.time}</p>
                     <p className={hour.temp <= 0 ? 'cold' : 'worm'}>{hour.temp}&deg;C</p>
                 </div>
             ))}
